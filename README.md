@@ -1,3 +1,5 @@
+HÚ HÚ HÚ KHẸC KHẸC
+
 # 🚀 MLOps Demo: Credit Scoring Pipeline (Lean MLOps)
 
 Chào mừng team đến với dự án demo MLOps! Dự án này mô phỏng một vòng đời hoàn chỉnh của một mô hình Học máy: từ lúc **Huấn luyện**, **Triển khai** (thành API), đến **Giám sát** dữ liệu thực tế và **Bảo trì**.
