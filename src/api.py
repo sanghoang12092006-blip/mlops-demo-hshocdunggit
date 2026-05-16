@@ -32,7 +32,7 @@ def predict(data: InputData):
     tks = (1 + lai_suat_thang) ** data.thoi_han_vay
     tra_hang_thang = data.so_tien_vay * lai_suat_thang * tks / (tks - 1)
 
-    # Tạo hẳn một bảng mới bằng tay, gom đủ 5 cột và xếp đúng thứ tự HT đã train
+    # Tạo bảng mới, gom đủ 5 cột
     input_df = pd.DataFrame([{
         'thu_nhap': int(data.thu_nhap),
         'so_tien_vay': int(data.so_tien_vay),
@@ -41,10 +41,10 @@ def predict(data: InputData):
         'tra_hang_thang': int(tra_hang_thang)  # 🌟 Cột hệ thống vừa tự tính ở Phần 2
     }])
 
-    # 5. Tiến hành dự đoán nợ xấu (0: Tốt, 1: Nợ xấu
+    # 5. Tiến hành dự đoán nợ xấu (0: Tốt, 1: Nợ xấu)
     ket_qua = model.predict(input_df)[0]
 
-    # 6. Ghi log lịch sử dự đoán (Đã cập nhật lại các cột cho khớp)
+    # 6. Ghi log lịch sử dự đoán
     log_path = "logs/inference_logs.csv"
     os.makedirs("logs", exist_ok=True) # Đảm bảo thư mục logs tồn tại
     file_exists = os.path.exists(log_path)
@@ -63,5 +63,5 @@ def predict(data: InputData):
             ket_qua
         ])
 
-    # 7. Trả kết quả về cho Frontend của Sang nhận diện hiển thị
+    # 7. Trả về kết quả
     return {"ket_qua_du_doan": int(ket_qua)}
